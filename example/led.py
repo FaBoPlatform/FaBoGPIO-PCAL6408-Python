@@ -18,7 +18,7 @@ pcal6408 = FaBoGPIO_PCAL6408.PCAL6408()
 
 try:
     while True:
-        for i in xrange(8):
+        for i in range(8):
             pcal6408.setDigital(1<<i, 1)
             time.sleep(1)
 

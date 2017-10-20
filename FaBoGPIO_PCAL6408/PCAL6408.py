@@ -10,7 +10,19 @@
 #
 #  FaBo <info@fabo.io>
 
-import smbus
+import pkg_resources
+SMBUS='smbus'
+for dist in pkg_resources.working_set:
+    #print(dist.project_name, dist.version)
+    if dist.project_name == 'smbus':
+        break
+    if dist.project_name == 'smbus2':
+        SMBUS='smbus2'
+        break
+if SMBUS == 'smbus':
+    import smbus
+elif SMBUS == 'smbus2':
+    import smbus2 as smbus
 import time
 
 ## Default I2C Slave Address

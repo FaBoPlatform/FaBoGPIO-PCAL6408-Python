@@ -3,7 +3,11 @@
 ## How to install.
 
 ```
+# python 2.7
 pip install FaBoGPIO_PCAL6408
+# python 3.6
+# pip3 install smbus2
+pip3 install FaBoGPIO_PCAL6408
 ```
 
 ## FaBo GPIO I2C Brick
@@ -19,6 +23,6 @@ pip install FaBoGPIO_PCAL6408
 　[PCAL6408A Datasheet](http://www.nxp.com/documents/data_sheet/PCAL6408A.pdf)
 
 ## Releases
-
+- 1.0.1 Pyton 3.6 smbus2 (and Python 2.7 smbus)
 - 1.0.0 Initial release.
 
