@@ -12,12 +12,13 @@ classifiers = ['Development Status :: 4 - Beta',
                'License :: OSI Approved :: Apache Software License',
                'Intended Audience :: Developers',
                'Programming Language :: Python :: 2.7',
+               'Programming Language :: Python :: 3.6',
                'Topic :: Software Development',
                'Topic :: System :: Hardware']
 
 setup(
     name         = 'FaBoGPIO_PCAL6408',
-    version      = '1.0.0',
+    version      = '1.0.1',
     author       = 'FaBo',
     author_email = 'info@fabo.io',
     description  = "This is a library for the FaBo GPIO I2C Brick.",
