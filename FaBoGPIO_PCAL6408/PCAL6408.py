@@ -85,24 +85,21 @@ IO6 = 0x40
 ## IO7 : 0b10000000
 IO7 = 0x80
 
-## smbus
-bus = smbus.SMBus(1)
-
 ## FaBo GPIO I2C Controll class
 class PCAL6408:
 
     ## Constructor
     #  @param [in] address PCAL6408 I2C slave address default:0x20
-    def __init__(self, address=SLAVE_ADDRESS):
-
+    def __init__(self, address=SLAVE_ADDRESS, busnum=1):
+        self.bus = smbus.SMBus(busnum)
         self.address = address
-        self.output  = 0x00
+        self.output = 0x00
         self.configuration()
 
     ## Configure Device
     def configuration(self):
         conf = IO0_OUTPUT | IO1_OUTPUT | IO2_OUTPUT | IO3_OUTPUT | IO4_OUTPUT | IO5_OUTPUT | IO6_OUTPUT | IO7_OUTPUT
-        bus.write_byte_data(self.address, CONFIGURATION_REG, conf)
+        self.bus.write_byte_data(self.address, CONFIGURATION_REG, conf)
 
     ## set Port to Digital
     #  @param [in] port Port
@@ -112,14 +109,14 @@ class PCAL6408:
             self.output |= port
         elif (output == 0):
             self.output &= ~port
-        bus.write_byte_data(self.address, OUTPUT_REG, self.output)
+        self.bus.write_byte_data(self.address, OUTPUT_REG, self.output)
 
     ## All Port to LOW
     def setAllClear(self):
-        bus.write_byte_data(self.address, OUTPUT_REG, 0x00)
+        self.bus.write_byte_data(self.address, OUTPUT_REG, 0x00)
         self.output = 0x00
 
     ## set Port to GPIO
     #  @param [in] output output
     def setGPIO(self, output):
-        bus.write_byte_data(self.address, OUTPUT_REG, output)
+        self.bus.write_byte_data(self.address, OUTPUT_REG, output)
