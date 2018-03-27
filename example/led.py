@@ -14,7 +14,8 @@ import FaBoGPIO_PCAL6408
 import time
 import sys
 
-pcal6408 = FaBoGPIO_PCAL6408.PCAL6408()
+BUSNUM=1
+pcal6408 = FaBoGPIO_PCAL6408.PCAL6408(busnum=BUSNUM)
 
 try:
     while True:
